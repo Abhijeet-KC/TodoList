@@ -1,20 +1,22 @@
 let todos = ['write code', 'stay focussed', 'believe in yourself'];
 todos.push('keep learning');
 
-todos.forEach(function addTodo(todoTitle){
+todos.forEach(function addTodo(todoTitle) {
 
-let element = document.createElement('div');
-element.innerText = todoTitle;
-document.body.appendChild(element);
+    let element = document.createElement('div');
+    element.innerText = todoTitle;
+    document.body.appendChild(element);
 
 })
 
-function addTodo(todoTitle){
+function addTodo(todoTitle) {
 
-todos.push(todoTitle);
-let element = document.createElement('div');
-element.innerText = todoTitle;
-document.body.appendChild(element);
+    let todo_in = document.getElementById('todo');
+    let text = todo_in.value;
+    todos.push(text);
+    let element = document.createElement('div');
+    element.innerText = text;
+    document.body.appendChild(element);
 
 }
 

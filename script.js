@@ -1,22 +1,27 @@
-let todos = ['write code', 'stay focussed', 'believe in yourself'];
+const todos = ['write code', 'stay focussed', 'believe in yourself'];
 todos.push('keep learning');
 
-todos.forEach(function addTodo(todoTitle) {
+render();
+function render() {
+    // clear the list
+    document.getElementById('todos-list').innerHTML = '';
 
-    let element = document.createElement('div');
-    element.innerText = todoTitle;
-    document.body.appendChild(element);
+    todos.forEach(function (todoTitle) {
+        const element = document.createElement('div');
+        element.innerText = todoTitle;
+        const todolist = document.getElementById('todos-list');
+        todolist.appendChild(element);
+    });
+}
 
-})
+function addTodo() {
 
-function addTodo(todoTitle) {
-
-    let todo_in = document.getElementById('todo');
-    let text = todo_in.value;
+    const text_input = document.getElementById('todo');
+    const text = text_input.value;
     todos.push(text);
-    let element = document.createElement('div');
-    element.innerText = text;
-    document.body.appendChild(element);
+    render();
 
 }
+
+
 

@@ -24,10 +24,16 @@ function render() {
 
     todos.forEach(function (todo) {
         const element = document.createElement('div');
-        element.innerText = todo.title + ' | ' + todo.due_date;
+        
+        const title = document.createElement('p');
+        title.innerHTML = todo.title + ' | ' + todo.due_date;
+        title.classList.add("todo-title")
+        element.appendChild(title)
+        element.classList.add("todo-card") // giving class name to element for css 
 
         const deleteButton = document.createElement('button');
         deleteButton.innerText = 'Delete';
+        deleteButton.classList.add("btn")  // adding class name to button as btn
         deleteButton.style = 'margin-left: 10px';
         deleteButton.onclick = deleteTodo;
         deleteButton.id = todo.id;
@@ -36,6 +42,14 @@ function render() {
         const todolist = document.getElementById('todos-list');
         todolist.appendChild(element);
     });
+    const todolist = document.getElementById('todos-list');
+    const title = document.createElement('p');
+    title.classList.add("no-todo-text")
+    title.innerHTML = "No todos "
+    if(todos.length == 0){
+        todolist.appendChild(title)
+    }
+
 }
 
 function addTodo() {
@@ -46,15 +60,18 @@ function addTodo() {
     const datePicker = document.getElementById('DatePicker');
     const due_date = datePicker.value;
 
-    const id = '' + new Date().getTime();
+    const id = new Date().getTime().toString();   // converting number to string
 
-    todos.push(
-        {
-            title: text,
-            due_date: due_date,
-            id: id
-        }
-    );
+    // create new todo card only if all filed are filled
+    if(text && due_date){ 
+        todos.push(
+            {
+                title: text,
+                due_date: due_date,
+                id: id
+            }
+        );
+    }
 
     render();
 
@@ -68,8 +85,6 @@ function deleteTodo(event){
         // return all todos except the one with the id to delete
         return todo.id !== idToDelete;
     });
-    render();
-}
 
 
 

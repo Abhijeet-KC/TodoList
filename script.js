@@ -46,7 +46,7 @@ function addTodo() {
     const datePicker = document.getElementById('DatePicker');
     const due_date = datePicker.value;
 
-    const id = new Date().getTime();
+    const id = '' + new Date().getTime();
 
     todos.push(
         {
@@ -68,6 +68,7 @@ function deleteTodo(event){
         // return all todos except the one with the id to delete
         return todo.id !== idToDelete;
     });
+    render();
 }
 
 

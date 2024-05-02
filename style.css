@@ -1,0 +1,86 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.main-heading{
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: blue
+}
+
+.todo-box{
+    /* border: 2px solid red ; */
+    width: 60%;
+    height: 30%;
+    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#todo{
+    font-size: 30px;
+    border-radius: 12px;
+    border:1px solid black;
+    text-align: center;
+}
+
+#DatePicker{
+    font-size: 30px;
+    border-radius: 12px;
+    border:1px solid black;
+    text-align: center;
+}   
+
+.btn{
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 8px 24px;
+    font-size: 20px;
+}
+.btn:hover{
+    color:gray
+}
+.btn:active{
+    color: white;
+}
+
+#todos-list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 100vh;
+    padding-inline:20px;
+    gap: 20px;
+}
+
+
+.todo-card{
+    box-shadow: 0px 0px 9px 3px #c5baba;
+    width: 300px;
+    height: 200px;
+    margin-top: 20px;
+    display: flex;
+    border-radius: 12px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 12px;
+}
+
+.todo-title{
+   font-size: 1.5rem;
+   text-align: center;
+}
+
+
+.no-todo-text{
+    text-align: center;
+    font-size: 2rem;
+    width: 100%;
+}

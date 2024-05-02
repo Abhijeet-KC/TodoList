@@ -4,15 +4,21 @@
         <title>
             Todo List App
         </title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>
+        <h1 class="main-heading">
             Todo List App
         </h1>
-        <input type="text" id="todo" placeholder="Enter your todo"/>
-        <input type="date" id="DatePicker"/>
-        <button onclick="addTodo()"> Press Me </button>
+
+        <form action="#" class="todo-box">
+            <input type="text" id="todo" required placeholder="Enter your todo"/>
+            <input type="date" id="DatePicker" required />
+            <button onclick="addTodo()" class="btn"> Press Me </button>    
+        </form>
+        
         <div id="todos-list"></div>
+
         <script src="script.js"></script>
     </body>
 </html>

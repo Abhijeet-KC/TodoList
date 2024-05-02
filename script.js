@@ -85,8 +85,6 @@ function deleteTodo(event){
         // return all todos except the one with the id to delete
         return todo.id !== idToDelete;
     });
-    render()
-}
 
 
 

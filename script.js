@@ -1,3 +1,4 @@
+//Model
 let todos = [{
     title: 'write code',
     due_date: '2024-01-30',
@@ -17,7 +18,35 @@ todos.push({
     id: 'id4'
 });
 
-render();
+//creates todo
+
+function createTodo(text, due_date){
+
+    const id = new Date().getTime().toString();   // converting number to string
+
+    // create new todo card only if all filed are filled
+    if(text && due_date){ 
+        todos.push(
+            {
+                title: text,
+                due_date: due_date,
+                id: id
+            }
+        );
+    }
+}
+
+//removes todo
+function removeTodo(idToDelete){
+
+    todos = todos.filter(function (todo) {
+        // return all todos except the one with the id to delete
+        return todo.id !== idToDelete;
+    });
+
+}
+
+//View
 function render() {
     // clear the list
     document.getElementById('todos-list').innerHTML = '';
@@ -52,6 +81,7 @@ function render() {
 
 }
 
+//Controller
 function addTodo() {
 
     const text_input = document.getElementById('todo');
@@ -60,18 +90,7 @@ function addTodo() {
     const datePicker = document.getElementById('DatePicker');
     const due_date = datePicker.value;
 
-    const id = new Date().getTime().toString();   // converting number to string
-
-    // create new todo card only if all filed are filled
-    if(text && due_date){ 
-        todos.push(
-            {
-                title: text,
-                due_date: due_date,
-                id: id
-            }
-        );
-    }
+    createTodo(text, due_date);    
 
     render();
 
@@ -81,12 +100,9 @@ function deleteTodo(event){
     const deleteButton = event.target;
     const idToDelete = deleteButton.id;
 
-    todos = todos.filter(function (todo) {
-        // return all todos except the one with the id to delete
-        return todo.id !== idToDelete;
-    });
-    render()
+    removeTodo(idToDelete);
+
+    render();
 }
 
-
-
+render();

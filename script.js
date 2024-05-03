@@ -46,6 +46,32 @@ function removeTodo(idToDelete){
 
 }
 
+
+//Controller
+function addTodo() {
+
+    const text_input = document.getElementById('todo');
+    const text = text_input.value;
+    
+    const datePicker = document.getElementById('DatePicker');
+    const due_date = datePicker.value;
+    
+    createTodo(text, due_date);    
+    
+    render();
+    
+}
+
+function deleteTodo(event){
+
+    const deleteButton = event.target;
+    const idToDelete = deleteButton.id;
+    
+    removeTodo(idToDelete);
+    
+    render();
+}
+
 //View
 function render() {
     // clear the list
@@ -56,13 +82,13 @@ function render() {
         
         const title = document.createElement('p');
         title.innerHTML = todo.title + ' | ' + todo.due_date;
-        title.classList.add("todo-title")
-        element.appendChild(title)
+        title.classList.add("todo-title"); // adding class name to title for css
+        element.appendChild(title);
         element.classList.add("todo-card") // giving class name to element for css 
 
         const deleteButton = document.createElement('button');
         deleteButton.innerText = 'Delete';
-        deleteButton.classList.add("btn")  // adding class name to button as btn
+        deleteButton.classList.add("btn");  // adding class name to button as btn
         deleteButton.style = 'margin-left: 10px';
         deleteButton.onclick = deleteTodo;
         deleteButton.id = todo.id;
@@ -73,36 +99,10 @@ function render() {
     });
     const todolist = document.getElementById('todos-list');
     const title = document.createElement('p');
-    title.classList.add("no-todo-text")
-    title.innerHTML = "No todos "
+    title.classList.add("no-todo-text");
+    title.innerHTML = "No todos ";
     if(todos.length == 0){
-        todolist.appendChild(title)
+        todolist.appendChild(title);
     }
-
 }
-
-//Controller
-function addTodo() {
-
-    const text_input = document.getElementById('todo');
-    const text = text_input.value;
-
-    const datePicker = document.getElementById('DatePicker');
-    const due_date = datePicker.value;
-
-    createTodo(text, due_date);    
-
-    render();
-
-}
-
-function deleteTodo(event){
-    const deleteButton = event.target;
-    const idToDelete = deleteButton.id;
-
-    removeTodo(idToDelete);
-
-    render();
-}
-
 render();

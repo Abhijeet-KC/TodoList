@@ -1,7 +1,13 @@
 //Model
 let todos;
 
-const savedTodos = JSON.parse(localStorage.getItem('todos'));
+const savedTodosItem = localStorage.getItem('todos');
+
+let savedTodos;
+
+if(savedTodosItem){
+    savedTodos = JSON.parse(savedTodosItem);
+}
 
 if(Array.isArray(savedTodos)){
     todos = savedTodos;
@@ -10,7 +16,7 @@ if(Array.isArray(savedTodos)){
 }
 
 else {
-    let todos = [{
+     todos = [{
         title: 'write code',
         due_date: '2024-01-30',
         id: 'id1'
@@ -67,6 +73,7 @@ function removeTodo(idToDelete) {
 
 function saveTodos() {
     localStorage.setItem('todos', JSON.stringify(todos));
+    console.log(JSON.stringify(todos));
 }
 
 //Controller

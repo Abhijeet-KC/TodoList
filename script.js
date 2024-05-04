@@ -1,8 +1,12 @@
 //Model
 let todos;
 
-if (localStorage.getItem('todos')) {
-    todos = JSON.parse(localStorage.getItem('todos'));
+const savedTodos = JSON.parse(localStorage.getItem('todos'));
+
+if(Array.isArray(savedTodos)){
+    todos = savedTodos;
+    console.log("todos",todos);
+    console.log("savedTodos",savedTodos);
 }
 
 else {
